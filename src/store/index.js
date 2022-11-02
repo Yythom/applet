@@ -6,7 +6,7 @@ import { createUserSlice } from './user'
 const useBaseStore = create(
     immer(
         (set, get, s) => ({
-            user: { ...createUserSlice(set, get, s), }
+            user: createUserSlice(set, get, s)
         })
     )
 )

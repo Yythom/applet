@@ -1,8 +1,9 @@
 import useStore from "."
 
+// user
 export const createUserSlice = (set) => ({
-    userInfo: 0,
-    setUserInfo: () => set((state) => ({ bears: state.userInfo   })),
+    userInfo: {},
+    setUserInfo: (info) => set((state) => { state.user.userInfo = info }, false),
 })
 
 export const userStore = () => useStore(s => s.user)
