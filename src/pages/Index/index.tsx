@@ -1,6 +1,7 @@
 import { View, Text, Button } from '@tarojs/components'
+import { Popup, usePopup } from 'src/components';
 import { UserName, WxUserInfo } from 'src/features';
-import { H1, HStack, Popup, usePopup, VStack } from 'src/layout';
+import { H1, HStack, VStack } from 'src/layout';
 import { userStore } from 'src/store'
 import './index.less'
 
