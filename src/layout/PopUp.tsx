@@ -1,20 +1,20 @@
 import { View } from "@tarojs/components"
 import React, { useState } from "react"
 
-export const usePopUp = () => {
+export const usePopup = () => {
     const [isOpen, setOpen] = useState(false)
     return {
         isOpen,
         toggle: () => setOpen(!isOpen)
     }
 }
-type PopUpType = {
+type PopupType = {
     isOpen: boolean
     onClose: (() => {}) | (() => void)
     direction?: 'bottom' | 'left' | 'right' | 'top'
     children: React.ReactNode
 }
-export const PopUp: React.FC<PopUpType> = ({
+export const Popup: React.FC<PopupType> = ({
     isOpen,
     onClose = () => { },
     direction = 'bottom',
@@ -35,12 +35,12 @@ export const PopUp: React.FC<PopUpType> = ({
             >
                 {children}
             </View>
-            {isOpen && <PopUpMask onClick={onClose} />}
+            {isOpen && <PopupMask onClick={onClose} />}
         </>
     )
 }
 
-export const PopUpMask = (props) => (
+export const PopupMask = (props) => (
     <View catchMove style={{ position: 'fixed', background: 'rgba(0,0,0,.4)', zIndex: '99', width: '100vw', height: '100vh' }} {...props} />
 )
 
