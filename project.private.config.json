@@ -13,6 +13,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "subpackages/create/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

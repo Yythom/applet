@@ -5,7 +5,8 @@ export default defineAppConfig({
   subpackages: [{
     root: "subpackages/",
     pages: [
-      "demo/index"
+      "demo/index",
+      "create/index",
     ]
   }],
   window: {
