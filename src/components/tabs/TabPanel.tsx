@@ -2,11 +2,11 @@ import { Swiper, SwiperItem, View } from "@tarojs/components"
 import React from "react"
 import { useTabsContext } from "./context"
 
-export const TabPanels = ({ width = '100vw', height = '', children }) => {
+export const TabPanels = ({ height = '', children }) => {
     const { currentIndex, move } = useTabsContext()
     return (
         <Swiper
-            style={{ width, height }}
+            style={{ width: "100%", height }}
             duration={300}
             easingFunction='linear'
             current={currentIndex}

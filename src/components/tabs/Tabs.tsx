@@ -2,11 +2,13 @@ import { View } from "@tarojs/components"
 import React, { useCallback, useState } from "react"
 import { TabsProvider, TabsContext } from "./context"
 
-export const Tabs = ({ children, direction = 'horizontal' }: {
+export const Tabs = ({ children, direction = 'horizontal', activeStyle, defaultIndex }: {
     children: React.ReactNode
     direction?: TabsContext['direction']
+    activeStyle?: TabsContext['activeStyle']
+    defaultIndex?: number
 }) => {
-    const [index, setIndex] = useState(0)
+    const [index, setIndex] = useState(defaultIndex || 0)
 
     const [lineProps, setLineProps] = useState<TabsContext['lineProps']>()
     const move = useCallback((idx: number) => {
@@ -22,7 +24,8 @@ export const Tabs = ({ children, direction = 'horizontal' }: {
                     length: React.Children.toArray((React.Children.toArray(children)[0] as any).props.children).length,
                     setLineProps,
                     lineProps,
-                    direction
+                    direction,
+                    activeStyle
                 }}
             >
                 {children}

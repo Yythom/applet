@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import { createContext } from "src/utils";
 
 export type TabsContext = {
@@ -13,6 +14,7 @@ export type TabsContext = {
             height?: string | number
         }
     }
+    activeStyle?: CSSProperties
     setLineProps?: (d: TabsContext['lineProps']) => void
 }
 
