@@ -2,6 +2,31 @@ import { View } from "@tarojs/components"
 import React, { useCallback, useState } from "react"
 import { TabsProvider, TabsContext } from "./context"
 
+
+/**
+ * @Examples
+ * ```
+   <View style={{ width: '300px', height: '400px' }}>
+       <Tabs
+           direction='vertical'
+           activeStyle={{ color: 'red' }}
+           defaultIndex={4}
+       >
+           <TabList>
+               <TabItem style={{ fontSize: '18px' }}>
+                   测试 1
+               </TabItem>
+               <TabLine />
+           </TabList>
+           <TabPanels>
+               <TabPanel>
+                   <View>面板内容 1</View>
+               </TabPanel>
+           </TabPanels>
+       </Tabs>
+   </View>
+ * ```
+ */
 export const Tabs = ({ children, direction = 'horizontal', activeStyle, defaultIndex }: {
     children: React.ReactNode
     direction?: TabsContext['direction']

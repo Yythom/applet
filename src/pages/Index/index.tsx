@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { View, Text, Button, ScrollView } from '@tarojs/components'
-import { Popup, TabItem, TabList, TabPanel, TabPanels, Tabs, usePopup } from 'src/components';
+import { useState } from 'react';
+import { Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabList, TabPanel, TabPanels, Tabs } from 'src/components';
 import { TabLine } from 'src/components/tabs/TabLine';
 import { UserName, WxUserInfo } from 'src/features';
 import { H1, HStack, VStack } from 'src/layout';
@@ -11,7 +12,8 @@ const Index = () => {
     const user = userStore()
     console.log(user);
 
-    const { isOpen, toggle } = usePopup()
+
+    const [aaa, toggle] = useState(false)
 
     return (
         <View className='index'>
@@ -23,7 +25,7 @@ const Index = () => {
             </WxUserInfo> */}
 
             <VStack spacing='30px'>
-                {/* <View>
+                <View>
                     <H1>HStack</H1>
                     <HStack spacing='30px' >
                         <View>123</View>
@@ -43,11 +45,23 @@ const Index = () => {
 
                 <View>
                     <H1>PopUp</H1>
-                    <View onClick={toggle}>底部打开</View>
-                    <Popup isOpen={isOpen} onClose={toggle} direction='bottom'>
-                        <H1 style={{ height: '400px' }}>弹出的内容</H1>
+                    <Popup direction='bottom'>
+                        <PopupTigger>
+                            <View>底部打开</View>
+                        </PopupTigger>
+                        <PopupContent>
+                            <PopupClose
+                                style={{
+                                    position: 'absolute',
+                                    right: '16px',
+                                    fontSize: '32px',
+                                    top: '16px'
+                                }}
+                            />
+                            <H1 style={{ height: '400px' }}>无所谓</H1>
+                        </PopupContent>
                     </Popup>
-                </View> */}
+                </View>
 
                 <View style={{ width: '300px', height: '400px', marginLeft: '40px', marginTop: '20px' }}>
                     <H1>Tabs</H1>
