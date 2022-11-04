@@ -16,7 +16,7 @@ export const Tabs = ({ children, direction = 'horizontal', activeStyle, defaultI
     }, [])
 
     return (
-        <View>
+        <View style={{ display: direction === 'vertical' ? 'flex' : 'block', width: '100%', height: '100%' }}>
             <TabsProvider
                 value={{
                     currentIndex: index,

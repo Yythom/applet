@@ -1,7 +1,8 @@
 export const Hstyle = {
-    width: '100vw', height: '40px',
+    height: '40px',
+    width: '100%',
 }
 
 export const Vstyle = {
-    width: '80vw', height: '100vh',
+    width: 'max-content',
 } 

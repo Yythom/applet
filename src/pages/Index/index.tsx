@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { Popup, TabItem, TabList, TabPanel, TabPanels, Tabs, usePopup } from 'src/components';
 import { TabLine } from 'src/components/tabs/TabLine';
@@ -48,9 +49,13 @@ const Index = () => {
                     </Popup>
                 </View> */}
 
-                <View style={{width:'300px'}}>
+                <View style={{ width: '300px', height: '400px', marginLeft: '40px', marginTop: '20px' }}>
                     <H1>Tabs</H1>
-                    <Tabs activeStyle={{ color: 'red' }} defaultIndex={4}>
+                    <Tabs
+                        direction='vertical'
+                        activeStyle={{ color: 'red' }}
+                        defaultIndex={4}
+                    >
                         <TabList>
                             <TabItem style={{ fontSize: '18px' }}>
                                 测试 1
@@ -85,7 +90,7 @@ const Index = () => {
                             <TabItem>
                                 测试 11
                             </TabItem>
-                            <TabLine style={{ top: '30px' }} />
+                            <TabLine />
                         </TabList>
 
                         <TabPanels>
