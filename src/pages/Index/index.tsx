@@ -50,7 +50,7 @@ const Index = () => {
 
                 <View style={{width:'300px'}}>
                     <H1>Tabs</H1>
-                    <Tabs activeStyle={{ color: 'red' }}>
+                    <Tabs activeStyle={{ color: 'red' }} defaultIndex={4}>
                         <TabList>
                             <TabItem style={{ fontSize: '18px' }}>
                                 测试 1

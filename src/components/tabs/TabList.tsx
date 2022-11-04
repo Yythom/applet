@@ -1,4 +1,5 @@
 import { ScrollView, View } from "@tarojs/components"
+import { NodesRef } from "@tarojs/taro"
 import React, { CSSProperties, useEffect, useState } from "react"
 import { useClass } from "src/hooks"
 import { Center, HStack } from "src/layout"
@@ -19,6 +20,7 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
         ScrollViewHeight,
 
         scrollDistance,
+        getScrollViewRect
     } = useTabListRect()
 
     // 滚动偏移居中
@@ -52,6 +54,7 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
                                 ScrollViewHeight: ScrollViewHeight.current,
                                 setScrollLeft,
                                 setScrollTop,
+                                getScrollViewRect,
                             })
                         )
                     }
@@ -74,6 +77,7 @@ export const TabItem = ({
     ScrollViewHeight = 0,// Inject
     setScrollLeft,       // Inject
     setScrollTop,        // Inject
+    getScrollViewRect,   // Inject
 }: {
     children?: React.ReactNode
     style?: CSSProperties
@@ -85,6 +89,7 @@ export const TabItem = ({
     ScrollViewHeight?: number
     setScrollLeft?: (n: number) => void,
     setScrollTop?: (n: number) => void,
+    getScrollViewRect?: () => Promise<NodesRef.BoundingClientRectCallbackResult>
 }) => {
     const { move, setLineProps, direction, currentIndex, activeStyle } = useTabsContext()
     const classId = useClass('TabItem-' + index)
@@ -102,9 +107,11 @@ export const TabItem = ({
         }
         // h5获取的宽度有问题
         if (direction === 'horizontal') {
+            // 初始化的时候可能拿不到 ScrollViewWidth
+            const scrollWidth = Number(ScrollViewWidth || (await getScrollViewRect?.())?.width)
             let offsetLeft = _style.left || 0
             let offsetWidth = _style.width || 0
-            const left = (offsetLeft <= ScrollViewWidth / 2) ? 0 : (offsetLeft - ScrollViewWidth / 2 + (offsetWidth / 2))
+            const left = (offsetLeft <= scrollWidth / 2) ? 0 : (offsetLeft - scrollWidth / 2 + (offsetWidth / 2))
             setScrollLeft?.(left)
         } else {
             console.log(ListHeight, 'vertical - height');
@@ -112,7 +119,6 @@ export const TabItem = ({
         }
         setLineProps?.({ style: _style })
     }
-
     useEffect(() => {
         currentIndex === index && setLine()
         // eslint-disable-next-line react-hooks/exhaustive-deps

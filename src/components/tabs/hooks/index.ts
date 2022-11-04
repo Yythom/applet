@@ -1,5 +1,4 @@
-import { createSelectorQuery } from "@tarojs/taro"
-import { useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef } from "react"
 import { useClass } from "src/hooks"
 import { useSelectorQuery } from "taro-hooks"
 
@@ -16,16 +15,27 @@ export const useTabListRect = () => {
     const ScrollViewWidth = useRef<number>() // ScrollView容器宽度
     const ScrollViewHeight = useRef<number>() // ScrollView容器宽度
     const scrollDistance = useRef<number>() // 滚动距离
+
+    const getListRect = useCallback(async () => {
+        const event = await getBoundingClientRect(`.${ScrollViewClass}`)
+        ListWidth.current = event.width
+        ListHeight.current = event.height
+        return event
+    }, [])
+
+
+    const getScrollViewRect = useCallback(async () => {
+        const event = await getBoundingClientRect(`.${ScrollViewClass}`)
+        console.log(event, ScrollViewClass, 'eee');
+        ScrollViewWidth.current = event.width
+        ScrollViewHeight.current = event.height
+        return event
+    }, [])
+
     useEffect(() => {
-        getBoundingClientRect(`.${ListClass}`).then(event => {
-            ListWidth.current = event.width
-            ListHeight.current = event.height
-        })
+        getListRect()
         // h5 需要兼容 原生js
-        getBoundingClientRect(`.${ScrollViewClass}`).then(event => {
-            ScrollViewWidth.current = event.width
-            ScrollViewHeight.current = event.height
-        })
+        getScrollViewRect()
     }, [])
 
     return {
@@ -35,6 +45,8 @@ export const useTabListRect = () => {
         ScrollViewClass,
         scrollDistance,
         ScrollViewWidth,
-        ScrollViewHeight
+        ScrollViewHeight,
+        getScrollViewRect,
+        getListRect
     }
 }
