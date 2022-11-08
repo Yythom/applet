@@ -66,7 +66,7 @@ const Index = () => {
                 <View style={{ width: '300px', height: '400px', marginLeft: '40px', marginTop: '20px' }}>
                     <H1>Tabs</H1>
                     <Tabs
-                        direction='vertical'
+                        // direction='vertical'
                         activeStyle={{ color: 'red' }}
                         defaultIndex={4}
                     >

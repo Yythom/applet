@@ -41,11 +41,13 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
                     {
                         React.Children.toArray(children).map((Element: any, i) =>
                             Element.type === TabLine ? Element : React.cloneElement(Element, {
-                                index: i,
-                                scrollDistance: scrollDistance.current,
-                                setScrollLeft,
-                                setScrollTop,
-                                getScrollViewRect,
+                                _INJECT: {
+                                    index: i,
+                                    scrollDistance: scrollDistance.current,
+                                    setScrollLeft,
+                                    setScrollTop,
+                                    getScrollViewRect,
+                                }
                             })
                         )
                     }
@@ -61,22 +63,20 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
 export interface TabItemProps {
     children?: React.ReactNode
     style?: CSSProperties
-    index?: number   // Inject
-    scrollDistance?:number // Inject
-    setScrollLeft?: (n: number) => void // Inject
-    setScrollTop?: (n: number) => void // Inject
-    getScrollViewRect?: () => Promise<NodesRef.BoundingClientRectCallbackResult> // Inject
+    _INJECT?: {
+        index?: number   // Inject
+        scrollDistance?: number // Inject
+        setScrollLeft?: (n: number) => void // Inject
+        setScrollTop?: (n: number) => void // Inject
+        getScrollViewRect?: () => Promise<NodesRef.BoundingClientRectCallbackResult> // Inject
+    }
 }
-export const TabItem: FC<TabItemProps> = (props) => {
-    const {
-        children,
-        style,
-        index = 0
-    } = props
+export const TabItem: FC<TabItemProps> = ({ children, style, _INJECT = {} }) => {
+    const { index = 0 } = _INJECT
     const { move, currentIndex, activeStyle } = useTabsContext()
 
     // line 核心代码吧 // 设置line跑到当前 tab下 //18批处理只会渲染一次
-    const { classId } = useTabLine(props)
+    const { classId } = useTabLine(_INJECT)
 
     return (
         <View

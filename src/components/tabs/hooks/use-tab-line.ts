@@ -7,12 +7,12 @@ import { TabItemProps } from "../TabList"
 
 export const useTabLine = (
     {
-        index = 0,           // Inject
+        index = 0,
         scrollDistance = 0,  // Inject
         setScrollLeft,       // Inject
         setScrollTop,        // Inject
         getScrollViewRect,   // Inject 
-    }: TabItemProps,
+    }: Required<TabItemProps>['_INJECT'],
 ) => {
     const classId = useClass('TabItem-' + index) // 用于获取tabItem宽度
     const { setLineProps, direction, currentIndex } = useTabsContext()
