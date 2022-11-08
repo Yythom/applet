@@ -17,7 +17,7 @@ export const TabLine = ({ style }: { style?: CSSProperties }) => {
                 ...(direction === 'vertical' ? { width: '2px' } : {}),
                 position: 'absolute',
                 zIndex: 1,
-                transition: '300ms'
+                transition: '400ms'
             }}
             {...rest}
         />

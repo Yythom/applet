@@ -33,7 +33,6 @@ export const useTabListRect = () => {
 
     useEffect(() => {
         getListRect()
-        // h5 需要兼容 原生js
         getScrollViewRect()
     }, [])
 
