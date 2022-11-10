@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { useState } from 'react';
-import { Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabList, TabPanel, TabPanels, Tabs } from 'src/components';
+import { Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabList, TabPanel, TabPanels, Tabs } from 'src/components';
 import { TabLine } from 'src/components/tabs/TabLine';
 import { UserName, WxUserInfo } from 'src/features';
-import { H1, HStack, VStack } from 'src/layout';
+import { Center, H1, HStack, VStack } from 'src/layout';
 import { userStore } from 'src/store'
 import './index.less'
 
@@ -27,7 +27,7 @@ const Index = () => {
             <VStack spacing='30px'>
                 <View>
                     <H1>HStack</H1>
-                    <HStack spacing='30px' >
+                    <HStack spacing='4px' >
                         <View>123</View>
                         <View>123</View>
                         <View>123</View>
@@ -36,12 +36,27 @@ const Index = () => {
 
                 <View>
                     <H1>VStack</H1>
-                    <VStack spacing='30px' >
+                    <VStack spacing='4px' >
                         <View>123</View>
                         <View>123</View>
                         <View>123</View>
                     </VStack>
                 </View>
+
+                <Center>
+                    <View>
+                        <Popover direction='right' mode='hover'>
+                            <PopoverTrigger>
+                                <View>PopoverTrigger</View>
+                            </PopoverTrigger>
+                            <PopoverContent>
+                                <View style={{ width: '100px', height: '50px', border: '1px solid #eee' }}>
+                                    面板
+                                </View>
+                            </PopoverContent>
+                        </Popover>
+                    </View>
+                </Center>
 
                 <View>
                     <H1>PopUp</H1>
