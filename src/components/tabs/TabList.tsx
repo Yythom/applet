@@ -34,9 +34,9 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
             scrollAnchoring
             scrollWithAnimation
             {...openScroll}
-            style={{ ...(direction === 'horizontal' ? Hstyle : Vstyle), position: 'relative', }}
+            style={{ ...(direction === 'horizontal' ? Hstyle : Vstyle) }}
         >
-            <View className={ListClass} style={{ width: 'max-content', height: 'max-content' }}>
+            <View className={ListClass} style={{ width: 'max-content', height: 'max-content', position: 'relative', }}>
                 <Wrap spacing={spacing}>
                     {
                         React.Children.toArray(children).map((Element: any, i) =>

@@ -2,7 +2,6 @@
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components';
-import { UserName, WxUserInfo } from 'src/features';
 import { Center, H1, HStack, VStack } from 'src/layout';
 import { userStore } from 'src/store'
 import './index.less'
@@ -10,6 +9,7 @@ import './index.less'
 const Index = () => {
     const user = userStore()
     console.log(user);
+ 
 
 
     const [aaa, toggle] = useState(false)

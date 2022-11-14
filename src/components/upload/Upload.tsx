@@ -16,19 +16,14 @@ export const Upload = ({ children, isCompress = true }) => {
 
 Upload.PreviewImage = ({ style }: { style?: CSSProperties, }) => {
     const { url, progress, preview } = useUploadContext()
+    console.log(progress);
+    
     return (
         <View style={{ width: '50px', height: '50px', background: '#eee', ...style, position: 'relative' }}>
-
+ 
             {
-                (progress > 0 && progress !== 100)
-                    ? <Center>
-                        <Progress
-                            percent={progress}
-                            style={{ height: '4px', width: '60%' }}
-                        />
-                    </Center>
-                    :
-                    <>
+                (progress === 100)
+                    ? <>
                         {url.download && <Upload.RemoveFileIcon style={{ position: 'absolute', right: '-4px', top: '-4px' }} />}
                         <Image
                             onClick={() => preview(url.download)}
@@ -36,6 +31,14 @@ Upload.PreviewImage = ({ style }: { style?: CSSProperties, }) => {
                             style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                         />
                     </>
+                    :
+                    <Center>
+                        <Progress
+                            percent={progress}
+                            style={{ height: '4px', width: '60%' }}
+                        />
+                    </Center>
+
             }
         </View>
     )
@@ -52,6 +55,6 @@ Upload.FileTrigger = ({ children }) => {
 
 Upload.RemoveFileIcon = ({ children, style }: { children?: ReactNode, style: CSSProperties }) => {
     return (
-        <View style={{ fontSize: '24px', fontWeight: '600', ...style }}>{children || 'X'}</View>
+        <View style={{ fontSize: '24px', fontWeight: '600', ...style, zIndex: 1 }}>{children || 'X'}</View>
     )
 }

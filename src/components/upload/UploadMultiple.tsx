@@ -1,6 +1,6 @@
 import { Image, Progress, View } from "@tarojs/components"
 import { CSSProperties, ReactNode } from "react"
-import { Center } from "src/layout"
+import {   VStack } from "src/layout"
 import { UploadMultipleProvider, useUploadMultipleContext, } from "./context"
 import { FileItem, useUploadMultiple } from "./use-upload-multiple"
 
@@ -23,21 +23,34 @@ UploadMultiple.PreviewImage = ({ style }: { style?: CSSProperties }) => {
 UploadMultiple.ImageItem = ({ fileItem, style }: { fileItem: FileItem[''], style?: CSSProperties }) => {
     const { preview } = useUploadMultipleContext()
     return (
-        <View style={{ width: '50px', height: '50px', background: '#eee', ...style, position: 'relative' }}>
-            {fileItem?.url.download && <UploadMultiple.RemoveFileIcon fileName={fileItem.name} style={{ position: 'absolute', right: '-4px', top: '-4px' }} />}
+        <View
+            style={{
+                width: '50px',
+                height: '50px',
+                background: '#eee',
+                ...style,
+                position: 'relative'
+            }}
+        >
+            {fileItem?.url.download && <UploadMultiple.RemoveFileIcon
+                fileName={fileItem.name}
+                style={{ position: 'absolute', right: '-8px', top: '-8px' }}
+            />}
             {
-                (fileItem?.progress > 0 && fileItem?.progress !== 100)
-                    ? <Center>
-                        <Progress
-                            percent={fileItem?.progress}
-                            style={{ height: '4px', width: '60%' }}
-                        />
-                    </Center>
-                    : <Image
+                (fileItem?.progress === 100)
+                    ? <Image
                         onClick={() => preview(fileItem?.url.download)}
                         src={fileItem?.url.download || ''}
                         style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                     />
+                    :
+                    <VStack spacing='4px'>
+                        <View>{fileItem?.progress}</View>
+                        <Progress
+                            percent={fileItem?.progress}
+                            style={{ height: '4px', width: '60%' }}
+                        />
+                    </VStack>
             }
         </View>
     )
@@ -56,6 +69,6 @@ UploadMultiple.RemoveFileIcon = ({ children, style, fileName }: { children?: Rea
     const { removeFile } = useUploadMultipleContext()
 
     return (
-        <View onClick={() => removeFile(fileName)} style={{ fontSize: '24px', fontWeight: '600', ...style }}>{children || 'X'}</View>
+        <View onClick={() => removeFile(fileName)} style={{ fontSize: '24px', fontWeight: '600', ...style, zIndex: 1 }}>{children || 'X'}</View>
     )
 }
