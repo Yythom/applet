@@ -1,7 +1,7 @@
 import Taro from "@tarojs/taro";
 import { useState } from "react";
 import { useImage, useRequest } from "taro-hooks";
-import { uploadApi } from "./upload-api";
+import { uploadApi } from "../upload-api";
 
 /**
  * @param isCompress  是否开启压缩 

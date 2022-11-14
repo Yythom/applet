@@ -2,7 +2,7 @@ import { Image, Progress, View } from "@tarojs/components"
 import { CSSProperties, ReactNode } from "react"
 import { Center } from "src/layout"
 import { UploadProvider, useUploadContext } from "./context"
-import { useUpload } from "./use-upload"
+import { useUpload } from "./hooks/use-upload"
 
 export const Upload = ({ children, isCompress = true }) => {
     const state = useUpload({ isCompress })

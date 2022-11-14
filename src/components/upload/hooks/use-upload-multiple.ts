@@ -1,7 +1,7 @@
 import Taro from "@tarojs/taro";
 import { useState } from "react";
 import { useImage } from "taro-hooks";
-import { uploadApi } from "./upload-api";
+import { uploadApi } from "../upload-api";
 
 export type FileItem = Record<string, { url: { download?: string, preview?: string }, progress: number, name: string }>
 

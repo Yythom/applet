@@ -2,7 +2,7 @@ import { Image, Progress, View } from "@tarojs/components"
 import { CSSProperties, ReactNode } from "react"
 import {   VStack } from "src/layout"
 import { UploadMultipleProvider, useUploadMultipleContext, } from "./context"
-import { FileItem, useUploadMultiple } from "./use-upload-multiple"
+import { FileItem, useUploadMultiple } from "./hooks/use-upload-multiple"
 
 
 export const UploadMultiple = ({ children, count = 3, isCompress = true }) => {
