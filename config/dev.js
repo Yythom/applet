@@ -4,7 +4,12 @@ module.exports = {
   },
   defineConstants: {
   },
-  isWatch:true,
+  isWatch: true,
   mini: {},
-  h5: {}
+  h5: {
+    devServer: {
+      port: 10086,
+      host: 'localhost',
+    },
+  }
 }

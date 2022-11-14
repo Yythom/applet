@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { useState } from 'react';
-import { Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabList, TabPanel, TabPanels, Tabs } from 'src/components';
-import { TabLine } from 'src/components/tabs/TabLine';
+import { Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components';
 import { UserName, WxUserInfo } from 'src/features';
 import { Center, H1, HStack, VStack } from 'src/layout';
 import { userStore } from 'src/store'
@@ -25,6 +24,24 @@ const Index = () => {
             </WxUserInfo> */}
 
             <VStack spacing='30px'>
+                <Upload>
+                    <Upload.FileTrigger>
+                        单图片
+                    </Upload.FileTrigger>
+                    <View >
+                        <Upload.PreviewImage />
+                    </View>
+                </Upload>
+
+                <UploadMultiple>
+                    <UploadMultiple.FileTrigger>
+                        多图片
+                    </UploadMultiple.FileTrigger>
+                    <View >
+                        <UploadMultiple.PreviewImage />
+                    </View>
+                </UploadMultiple>
+
                 <View>
                     <H1>HStack</H1>
                     <HStack spacing='4px' >

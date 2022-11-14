@@ -53,6 +53,7 @@
     "@tarojs/taro": "3.5.7",
     "@tarojs/taro-h5": "3.5.7",
     "immer": "^9.0.16",
+    "mime-types": "^2.1.31",
     "preact": "^10.5.15",
     "taro-hooks": "^1.5.9",
     "zustand": "^4.1.4"
@@ -64,6 +65,7 @@
     "@prefresh/webpack": "^3.2.3",
     "@tarojs/cli": "3.5.7",
     "@tarojs/webpack5-runner": "3.5.7",
+    "@types/mime-types": "^2.1.1",
     "@types/react": "^18.0.0",
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
