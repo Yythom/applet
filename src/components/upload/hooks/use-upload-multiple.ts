@@ -30,7 +30,7 @@ export const useUploadMultiple = ({ count, isCompress }: { isCompress?: boolean,
         newFils: FileItem
     ) => {
         const { path, originalFileObj = {} } = file
-        const name = Taro.getEnv() === 'WEAPP' ? path.split('/tmp/')[1] : originalFileObj.name
+        const name = (Taro.getEnv() === 'WEAPP' ? path.split('/tmp')[1] : originalFileObj.name).replaceAll('_')
         newFils[name] = {
             name,
             progress: 0,

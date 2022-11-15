@@ -23,7 +23,7 @@ export const useUpload = ({ isCompress }: { isCompress?: boolean }) => {
 
     const onUpload = async (file: any, formData = {}) => {
         const { path, originalFileObj = {} } = file
-        const name = Taro.getEnv() === 'WEAPP' ? path.split('/tmp/')[1] : originalFileObj.name
+        const name = (Taro.getEnv() === 'WEAPP' ? path.split('/tmp')[1] : originalFileObj.name).replaceAll('_')
         return await run(isCompress ? (await compress(path)).tempFilePath : path, name, formData, (prog) => { setProgress(prog) })
     }
 
