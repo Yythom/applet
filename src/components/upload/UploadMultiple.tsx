@@ -9,7 +9,7 @@ export const UploadMultiple = ({ children, count = 3, isCompress = true }) => {
     const state = useUploadMultiple({ count, isCompress })
 
     return (
-        <UploadMultipleProvider value={state as any}>
+        <UploadMultipleProvider value={state}>
             {children}
         </UploadMultipleProvider>
     )
