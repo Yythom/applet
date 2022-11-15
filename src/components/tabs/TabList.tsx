@@ -3,7 +3,8 @@ import { ScrollView, View } from "@tarojs/components"
 import { NodesRef } from "@tarojs/taro"
 import React, { CSSProperties, FC, useState } from "react"
 import { Center, HStack, VStack } from "src/layout"
-import { useTabsContext } from "./context"
+import { useDebounce } from "taro-hooks"
+import { TabsContext, useTabsContext } from "./context"
 import { Hstyle, Vstyle } from "./defaultStyle"
 import { useTabLine, useTabListRect } from "./hooks"
 import { TabLine } from "./TabLine"
@@ -22,6 +23,8 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
     const [top, setScrollTop] = useState<number>(0)
     const openScroll = direction === 'horizontal' ? { scrollX: true } : { scrollY: true }
     const Wrap = direction === 'horizontal' ? HStack : VStack
+    const [lineProps, setLineProps] = useState<TabsContext['lineProps']>()
+
     return (
         <ScrollView
             className={ScrollViewClass}
@@ -32,7 +35,7 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
                 scrollDistance.current = direction === 'horizontal' ? scrollLeft : scrollTop
             }}
             scrollAnchoring
-            scrollWithAnimation
+            // scrollWithAnimation //   // 这里有个问题 还在滚动中的时候获取的位置有问题
             {...openScroll}
             style={{ ...(direction === 'horizontal' ? Hstyle : Vstyle) }}
         >
@@ -40,13 +43,14 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
                 <Wrap spacing={spacing}>
                     {
                         React.Children.toArray(children).map((Element: any, i) =>
-                            Element.type === TabLine ? Element : React.cloneElement(Element, {
+                            Element.type === TabLine ? React.cloneElement(Element, { lineProps }) : React.cloneElement(Element, {
                                 _INJECT: {
                                     index: i,
                                     scrollDistance: scrollDistance.current,
                                     setScrollLeft,
                                     setScrollTop,
                                     getScrollViewRect,
+                                    setLineProps,
                                 }
                             })
                         )
@@ -69,6 +73,7 @@ export interface TabItemProps {
         setScrollLeft?: (n: number) => void // Inject
         setScrollTop?: (n: number) => void // Inject
         getScrollViewRect?: () => Promise<NodesRef.BoundingClientRectCallbackResult> // Inject
+        setLineProps?: (d: TabsContext['lineProps']) => void
     }
 }
 export const TabItem: FC<TabItemProps> = ({ children, style, _INJECT = {} }) => {

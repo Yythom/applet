@@ -2,6 +2,13 @@ import { View } from "@tarojs/components"
 import React, { useCallback, useState } from "react"
 import { TabsProvider, TabsContext } from "./context"
 
+const useTab = (defaultIndex) => {
+    const [currentIndex, setIndex] = useState(defaultIndex || 0)
+    const move = useCallback((idx: number) => {
+        setIndex(idx)
+    }, [])
+    return { move, currentIndex }
+}
 
 /**
  * @Examples
@@ -33,22 +40,14 @@ export const Tabs = ({ children, direction = 'horizontal', activeStyle, defaultI
     activeStyle?: TabsContext['activeStyle']
     defaultIndex?: number
 }) => {
-    const [index, setIndex] = useState(defaultIndex || 0)
-
-    const [lineProps, setLineProps] = useState<TabsContext['lineProps']>()
-    const move = useCallback((idx: number) => {
-        setIndex(idx)
-    }, [])
+    const { move, currentIndex } = useTab(defaultIndex)
 
     return (
         <View style={{ display: direction === 'vertical' ? 'flex' : 'block', width: '100%', height: '100%' }}>
             <TabsProvider
                 value={{
-                    currentIndex: index,
+                    currentIndex,
                     move,
-                    length: React.Children.toArray((React.Children.toArray(children)[0] as any).props.children).length,
-                    setLineProps,
-                    lineProps,
                     direction,
                     activeStyle
                 }}

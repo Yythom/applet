@@ -1,9 +1,9 @@
 import { View } from "@tarojs/components"
 import { CSSProperties } from "react"
-import { useTabsContext } from "./context"
+import { TabsContext, useTabsContext } from "./context"
 
-export const TabLine = ({ style }: { style?: CSSProperties }) => {
-    const { lineProps = { style: {} }, direction } = useTabsContext()
+export const TabLine = ({ style, lineProps = { style: {} } }: { style?: CSSProperties, lineProps?: TabsContext['lineProps'] }) => {
+    const { direction } = useTabsContext()
     const { style: lineStyle, ...rest } = lineProps
 
     return (

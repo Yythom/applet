@@ -1,5 +1,5 @@
 import { View } from "@tarojs/components"
-import React, { CSSProperties, useEffect } from "react"
+import React, { useEffect } from "react"
 import { useHover } from "src/hooks"
 import { runIfFn } from "src/utils/function"
 import { PopoverContext, PopoverProvider, usePopoverContext } from "./context"
@@ -13,7 +13,7 @@ export const Popover = ({ children, direction = 'right', gutter = 20, mode = 'cl
 }) => {
     const { isOpen, trigger } = usePopover()
     return (
-        <PopoverProvider value={{ isOpen, direction, trigger, gutter, mode }} >
+        <PopoverProvider value={{ isOpen, trigger, direction, gutter, mode }} >
             <View style={{ position: 'relative' }}>
                 {runIfFn(children, {
                     isOpen,

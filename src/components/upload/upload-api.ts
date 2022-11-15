@@ -11,6 +11,7 @@ export const uploadApi = async (filePath: string, name = '', formData = {}, onPr
                 resolve((JSON.parse(ret.data) as any).data)
             },
         })
+     
         task.progress((res) => {
             onProgress?.(res.progress)
         })

@@ -147,13 +147,13 @@ const Index = () => {
                                 <View style={{ width: '100%', height: '100px', background: '#ccc' }}>面板内容 2</View>
                             </TabPanel>
                             <TabPanel>
-                                <View style={{ width: '100%', height: '100px', background: '#ccc' }}>面板内容 2</View>
+                                <View style={{ width: '100%', height: '100px', background: '#ccc' }}>面板内容 3</View>
                             </TabPanel>
                             <TabPanel>
-                                <View style={{ width: '100%', height: '100px', background: '#ccc' }}>面板内容 2</View>
+                                <View style={{ width: '100%', height: '100px', background: '#ccc' }}>面板内容 4</View>
                             </TabPanel>
                             <TabPanel>
-                                <View style={{ width: '100%', height: '100px', background: '#ccc' }}>面板内容 2</View>
+                                <View style={{ width: '100%', height: '100px', background: '#ccc' }}>面板内容 5</View>
                             </TabPanel>
                         </TabPanels>
                     </Tabs>

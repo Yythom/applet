@@ -16,7 +16,6 @@ export const Upload = ({ children, isCompress = true }) => {
 
 Upload.PreviewImage = ({ style }: { style?: CSSProperties, }) => {
     const { url, progress, preview } = useUploadContext()
-    console.log(progress);
     
     return (
         <View style={{ width: '50px', height: '50px', background: '#eee', ...style, position: 'relative' }}>
