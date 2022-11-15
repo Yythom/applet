@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { useState } from 'react';
-import { Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components';
+import { Picker, Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components';
 import { Center, H1, HStack, VStack } from 'src/layout';
 import { userStore } from 'src/store'
 import './index.less'
@@ -9,7 +9,7 @@ import './index.less'
 const Index = () => {
     const user = userStore()
     console.log(user);
- 
+
 
 
     const [aaa, toggle] = useState(false)
@@ -42,10 +42,11 @@ const Index = () => {
                     </View>
                 </UploadMultiple>
 
+
+
                 <View>
                     <H1>HStack</H1>
                     <HStack spacing='4px' >
-                        <View>123</View>
                         <View>123</View>
                         <View>123</View>
                     </HStack>
@@ -54,7 +55,6 @@ const Index = () => {
                 <View>
                     <H1>VStack</H1>
                     <VStack spacing='4px' >
-                        <View>123</View>
                         <View>123</View>
                         <View>123</View>
                     </VStack>
@@ -76,7 +76,7 @@ const Index = () => {
                 </Center>
 
                 <View>
-                    <H1>PopUp</H1>
+                    <H1>PopUp + Picker</H1>
                     <Popup direction='bottom'>
                         <PopupTigger>
                             <View>底部打开</View>
@@ -90,7 +90,24 @@ const Index = () => {
                                     top: '16px'
                                 }}
                             />
-                            <H1 style={{ height: '400px' }}>无所谓</H1>
+                            <Picker>
+                                <Picker.Column>
+                                    <Picker.Item>
+                                        11
+                                    </Picker.Item>
+                                    <Picker.Item>
+                                        12
+                                    </Picker.Item>
+                                </Picker.Column>
+                                <Picker.Column>
+                                    <Picker.Item>
+                                        21
+                                    </Picker.Item>
+                                    <Picker.Item>
+                                        22
+                                    </Picker.Item>
+                                </Picker.Column>
+                            </Picker>
                         </PopupContent>
                     </Popup>
                 </View>

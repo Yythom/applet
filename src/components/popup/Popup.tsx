@@ -22,6 +22,7 @@ export const PopupClose = ({ children, style }: { style?: CSSProperties, childre
                 right: '16px',
                 top: '16px',
                 position: 'absolute',
+                zIndex: 1,
                 ...style
             }}
         >
