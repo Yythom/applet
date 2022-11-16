@@ -1,6 +1,6 @@
 import { Image, Progress, View } from "@tarojs/components"
 import { CSSProperties, ReactNode } from "react"
-import { Center } from "src/layout"
+import { Center, VStack } from "src/layout"
 import { UploadProvider, useUploadContext } from "./context"
 import { useUpload } from "./hooks/use-upload"
 
@@ -16,10 +16,10 @@ export const Upload = ({ children, isCompress = true }) => {
 
 Upload.PreviewImage = ({ style }: { style?: CSSProperties, }) => {
     const { url, progress, preview } = useUploadContext()
-    
+
     return (
         <View style={{ width: '50px', height: '50px', background: '#eee', ...style, position: 'relative' }}>
- 
+
             {
                 (progress === 100)
                     ? <>
@@ -31,12 +31,13 @@ Upload.PreviewImage = ({ style }: { style?: CSSProperties, }) => {
                         />
                     </>
                     :
-                    <Center>
+                    <VStack spacing='4px'>
+                        <View>{progress}</View>
                         <Progress
                             percent={progress}
                             style={{ height: '4px', width: '60%' }}
                         />
-                    </Center>
+                    </VStack>
 
             }
         </View>

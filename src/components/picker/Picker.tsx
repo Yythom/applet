@@ -4,7 +4,7 @@ import { Center } from "src/layout"
 import { PickerProvider } from "./context"
 import { usePicker } from "./hooks/usePicker"
 
-export const Picker = ({ children, w, h, defaultValue = [1, 1] }: {
+export const Picker = ({ children, w, h, defaultValue = [] }: {
     children: ReactNode,
     w?: CSSProperties['width']
     h?: CSSProperties['height']
