@@ -8,6 +8,7 @@
     "import/no-commonjs": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "react-hooks/rules-of-hooks": "off",
-    "react/jsx-indent-props": "off"
+    "react/jsx-indent-props": "off",
+    "react-hooks/exhaustive-deps":"off"
   }
 }

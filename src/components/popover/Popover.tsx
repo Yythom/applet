@@ -27,7 +27,7 @@ export const Popover = ({ children, direction = 'right', gutter = 20, mode = 'cl
 export const PopoverTrigger = (props: React.PropsWithChildren<{}>) => {
     const { trigger, mode } = usePopoverContext()
     const { hover, hoverProps } = useHover()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  
     useEffect(() => { mode === 'hover' && trigger?.(hover) }, [hover])
     return (
         <View onClick={trigger} {...(mode === 'hover' ? hoverProps : {})}>

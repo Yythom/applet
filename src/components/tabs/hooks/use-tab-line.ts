@@ -52,7 +52,6 @@ export const useTabLine = (
     }
     useEffect(() => {
         currentIndex === index && setLine()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentIndex])
 
     return { classId }

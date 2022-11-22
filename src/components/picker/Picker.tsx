@@ -14,7 +14,6 @@ export const Picker = ({ children, w, h, defaultValue = [] }: {
 
     useEffect(() => {
         if (!state.value.format) state.onChange(defaultValue, children)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.value])
 
     return (
