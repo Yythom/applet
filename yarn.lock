@@ -2146,9 +2146,9 @@
   dependencies:
     "@types/node" "*"
 
-"@typescript-eslint/eslint-plugin@^5.43.0":
+"@typescript-eslint/eslint-plugin@^5.44.0":
   version "5.44.0"
-  resolved "https://registry.npmmirror.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.44.0.tgz"
+  resolved "https://registry.npmmirror.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.44.0.tgz#105788f299050c917eb85c4d9fd04b089e3740de"
   integrity sha512-j5ULd7FmmekcyWeArx+i8x7sdRHzAtXTkmDPthE4amxZOWKFK7bomoJ4r7PJ8K7PoMzD16U8MmuZFAonr1ERvw==
   dependencies:
     "@typescript-eslint/scope-manager" "5.44.0"
@@ -2161,9 +2161,9 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/parser@^5.20.0", "@typescript-eslint/parser@^5.43.0":
+"@typescript-eslint/parser@^5.20.0", "@typescript-eslint/parser@^5.44.0":
   version "5.44.0"
-  resolved "https://registry.npmmirror.com/@typescript-eslint/parser/-/parser-5.44.0.tgz"
+  resolved "https://registry.npmmirror.com/@typescript-eslint/parser/-/parser-5.44.0.tgz#99e2c710a2252191e7a79113264f438338b846ad"
   integrity sha512-H7LCqbZnKqkkgQHaKLGC6KUjt3pjJDx8ETDqmwncyb6PuoigYajyAwBGz08VU/l86dZWZgI4zm5k2VaKqayYyA==
   dependencies:
     "@typescript-eslint/scope-manager" "5.44.0"
