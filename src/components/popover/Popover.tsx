@@ -47,7 +47,7 @@ export const PopoverContent = (props: React.PropsWithChildren<{}>) => {
                 transition: '300ms',
                 pointerEvents: 'none',
                 position: 'absolute',
-                zIndex: 50,
+                zIndex: 10050,
                 ...getContentStyles(direction, isOpen, gutter)
             }}
         >

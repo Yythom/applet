@@ -1,6 +1,6 @@
-import { Button, View } from '@tarojs/components';
+import { Button, View } from '@tarojs/components'
 import Taro, { stopPullDownRefresh, usePullDownRefresh } from '@tarojs/taro'
-import { useParams } from 'src/hooks';
+import { useParams } from 'src/hooks'
 import './index.less'
 
 
@@ -11,7 +11,7 @@ const Index = () => {
     //     Taro.showShareMenu({ withShareTicket: true });
     // })
     Taro.useShareAppMessage(res => {
-        console.log(res, 'res');
+        console.log(res, 'res')
         if (res.from === 'button') {
             // 来自页面内转发按钮
             console.log(res.target)
@@ -24,14 +24,14 @@ const Index = () => {
     })
     usePullDownRefresh(() => {
         ///
-        stopPullDownRefresh();
+        stopPullDownRefresh()
     })
 
     return (
-        <View className='index-wrap'  >
+        <View>
             creat
             <Button openType='share' >123</Button>
         </View>
     )
 }
-export default Index;
+export default Index

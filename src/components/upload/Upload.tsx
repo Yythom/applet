@@ -21,16 +21,15 @@ Upload.PreviewImage = ({ style }: { style?: CSSProperties, }) => {
         <View style={{ width: '50px', height: '50px', background: '#eee', ...style, position: 'relative' }}>
 
             {
-                (progress === 100)
-                    ? <>
+                (progress === 100) ?
+                    <>
                         {url.download && <Upload.RemoveFileIcon style={{ position: 'absolute', right: '-4px', top: '-4px' }} />}
                         <Image
                             onClick={() => preview(url.download)}
                             src={url.download || ''}
                             style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                         />
-                    </>
-                    :
+                    </>                    :
                     <VStack spacing='4px'>
                         <View>{progress}</View>
                         <Progress

@@ -37,13 +37,12 @@ UploadMultiple.ImageItem = ({ fileItem, style }: { fileItem: FileItem[''], style
                 style={{ position: 'absolute', right: '-8px', top: '-8px' }}
             />}
             {
-                (fileItem?.progress === 100)
-                    ? <Image
+                (fileItem?.progress === 100) ?
+                    <Image
                         onClick={() => preview(fileItem?.url.download)}
                         src={fileItem?.url.download || ''}
                         style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                    />
-                    :
+                    />                    :
                     <VStack spacing='4px'>
                         <View>{fileItem?.progress}</View>
                         <Progress

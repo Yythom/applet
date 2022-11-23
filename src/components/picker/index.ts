@@ -1,3 +1,3 @@
-export * from './Picker'
+export * from './picker'
 export * from './context'
-export * from './hooks/usePicker'
+export * from './hooks/use-picker'

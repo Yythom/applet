@@ -1,6 +1,7 @@
-import { View } from "@tarojs/components"
+import { RootPortal, View } from "@tarojs/components"
 import React, { CSSProperties, useState } from "react"
 import { createContext } from "src/utils"
+import { Portal } from ".."
 import { PopupType } from "./type"
 
 const [PopupProvider, useContext] = createContext<{ setOpen: (d: boolean) => void, isOpen: boolean, direction: PopupType['direction'], close: () => Promise<void> }>({ name: 'PopupContext' })
@@ -41,7 +42,7 @@ export const PopupContent = ({ children }) => {
                 ...(styles[direction].common),
                 background: '#ccc',
                 position: 'fixed',
-                zIndex: '100',
+                zIndex: '10000',
                 transition: '360ms',
             }}
         >
@@ -70,7 +71,7 @@ export const Popup: React.FC<PopupType> = ({
     direction = 'bottom',
     children
 }) => {
-    const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = useState(false)
 
     const close = async () => {
         await onClose?.()
@@ -85,20 +86,22 @@ export const Popup: React.FC<PopupType> = ({
 }
 
 // 不要也得要 就不拆了
-const PopupMask = (props) => (
-    <View
-        catchMove
-        style={{
-            position: 'fixed',
-            background: 'rgba(0,0,0,.4)',
-            zIndex: '99',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh'
-        }}
-        {...props}
-    />
+const PopupMask = props => (
+    <Portal>
+        <View
+            catchMove
+            style={{
+                position: 'fixed',
+                background: 'rgba(0,0,0,.4)',
+                zIndex: '9999',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh'
+            }}
+            {...props}
+        />
+    </Portal>
 )
 
 const styles = {

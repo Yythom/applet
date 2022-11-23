@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useClass } from "src/hooks"
 import { useSelectorQuery } from "taro-hooks"
 import { useTabsContext } from "../context"
-import { TabItemProps } from "../TabList"
+import { TabItemProps } from "../tab-list"
 
 export const useTabLine = (
     {
@@ -35,17 +35,17 @@ export const useTabLine = (
             // 初始化的时候可能拿不到 ScrollViewWidth
             const scrollOffsetLeft = scrollRect?.left || 0
             const scrollWidth = scrollRect?.width || 0
-            let offsetLeft = Number(_style.left) - scrollOffsetLeft;
+            let offsetLeft = Number(_style.left) - scrollOffsetLeft
             _style.left = Number(_style.left) - scrollOffsetLeft
-            let scrollLefts = offsetLeft - (scrollWidth - Number(_style.width)) / 2;
+            let scrollLefts = offsetLeft - (scrollWidth - Number(_style.width)) / 2
             setScrollLeft?.(scrollLefts < 0 ? 0 : scrollLefts)
         } else {
             const scrollOffseTop = scrollRect?.top || 0
             const scrollHeight = scrollRect?.height || 0
-            let offsetTop = Number(_style.top) - scrollOffseTop;
+            let offsetTop = Number(_style.top) - scrollOffseTop
             _style.top = Number(_style.top) - scrollOffseTop
 
-            let _scrollTop = offsetTop - (scrollHeight - Number(_style.height)) / 2;
+            let _scrollTop = offsetTop - (scrollHeight - Number(_style.height)) / 2
             setScrollTop?.(_scrollTop < 0 ? 0 : _scrollTop)
         }
         setLineProps?.({ style: _style })

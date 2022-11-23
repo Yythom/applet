@@ -2,7 +2,7 @@ import { PickerView, PickerViewColumn } from "@tarojs/components"
 import React, { CSSProperties, ReactNode, useEffect } from "react"
 import { Center } from "src/layout"
 import { PickerProvider } from "./context"
-import { usePicker } from "./hooks/usePicker"
+import { usePicker } from "./hooks/use-picker"
 
 export const Picker = ({ children, w, h, defaultValue = [] }: {
     children: ReactNode,
@@ -21,7 +21,7 @@ export const Picker = ({ children, w, h, defaultValue = [] }: {
             <PickerView
                 style={{ width: w || '100%', height: h || '300px' }}
                 value={state.value.indexArr}
-                onChange={(eve) => {
+                onChange={eve => {
                     state.onChange(eve.detail.value, children)
                 }}
             >

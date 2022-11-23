@@ -14,7 +14,7 @@ export const TabPanels = ({ height = '', children }) => {
             duration={300}
             easingFunction='linear'
             current={currentIndex}
-            onChange={(e) => move(e.detail.current)}
+            onChange={e => move(e.detail.current)}
             circular
             // h5 不能为false
             vertical={direction === 'vertical' ? true : undefined}

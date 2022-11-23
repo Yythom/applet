@@ -1,13 +1,11 @@
-/* eslint-disable no-unused-vars */
 import { ScrollView, View } from "@tarojs/components"
 import { NodesRef } from "@tarojs/taro"
 import React, { CSSProperties, FC, useState } from "react"
 import { Center, HStack, VStack } from "src/layout"
-import { useDebounce } from "taro-hooks"
 import { TabsContext, useTabsContext } from "./context"
-import { Hstyle, Vstyle } from "./defaultStyle"
+import { Hstyle, Vstyle } from "./default-style"
 import { useTabLine, useTabListRect } from "./hooks"
-import { TabLine } from "./TabLine"
+import { TabLine } from "./tab-line"
 
 export const TabList = ({ children, spacing = '30px' }: { children: React.ReactNode, spacing?: string }) => {
     const { direction } = useTabsContext()
@@ -30,7 +28,7 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
             className={ScrollViewClass}
             scrollLeft={left}
             scrollTop={top}
-            onScroll={(event) => {
+            onScroll={event => {
                 const { scrollLeft, scrollTop } = event.detail
                 scrollDistance.current = direction === 'horizontal' ? scrollLeft : scrollTop
             }}

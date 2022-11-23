@@ -1,17 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { View, Text, Button, ScrollView } from '@tarojs/components'
-import { useState } from 'react';
-import { Picker, Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components';
-import { Center, H1, HStack, VStack } from 'src/layout';
-import { userStore } from 'src/store'
+import { useState } from 'react'
+import { Picker, Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components'
+import { Center, H1, HStack, VStack } from 'src/layout'
 import './index.less'
 
 const Index = () => {
-    const user = userStore()
-    console.log(user);
-
-
-
     const [aaa, toggle] = useState(false)
 
     return (

@@ -1,7 +1,7 @@
-import Taro from "@tarojs/taro";
+import Taro from "@tarojs/taro"
 
 export const uploadApi = async (filePath: string, name = '', formData = {}, onProgress = (progress: number) => { }) => {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         const task = Taro.uploadFile({
             name: name,
             url: 'http://49.235.84.243:8701/ossKey',
@@ -12,8 +12,8 @@ export const uploadApi = async (filePath: string, name = '', formData = {}, onPr
             },
         })
      
-        task.progress((res) => {
+        task.progress(res => {
             onProgress?.(res.progress)
         })
-    });
+    })
 }

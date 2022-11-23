@@ -1,1 +1,1 @@
-export * from './Popup'
+export * from './pop-up'
