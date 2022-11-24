@@ -1,5 +1,5 @@
-import { CSSProperties } from "react";
-import { createContext } from "src/utils";
+import { CSSProperties } from "react"
+import { createContext } from "src/utils"
 
 export type TabsContext = {
     currentIndex: number
