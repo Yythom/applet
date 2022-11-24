@@ -31,8 +31,8 @@ class HttpRequest {
 }
 
 const http = new HttpRequest()
-const request = (url, option: any) => {
-    return http.post(url, option)
+const request = async (url, option: any) => {
+    return await http.post(url, option)
 }
 request.post = http.post
 request.get = http.get

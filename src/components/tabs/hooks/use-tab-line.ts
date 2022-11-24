@@ -21,7 +21,8 @@ export const useTabLine = (
 
     // line 核心代码吧 // 设置line跑到当前 tab下
     const setLine = async () => {
-        const rect = await getBoundingClientRect(`.${classId}`)
+        let rect = await getBoundingClientRect(`.${classId}`)
+        if (!rect) rect = await getBoundingClientRect(`.${classId}`)
         const _style = direction === 'vertical' ? {
             top: rect.top + scrollDistance,
             height: rect.height,

@@ -14,7 +14,7 @@ const projects: Project[] = [
      * 工程名，会在dest指定的文件夹中生成对应的工程名文件夹
      * */
         name: 'apis',
-        source: '/swagger/http.json',
+        source: 'http://127.0.0.1:4523/export/openapi/3?version=3.0',
 
         /**
      * the api files will be generated to
@@ -23,7 +23,7 @@ const projects: Project[] = [
      *
      * 目标文件夹，相对路径以当前'tsg.config.ts'为基准
      * */
-        dest: 'services/apis',
+        dest: 'services',
 
         /**
      * swagger doc path

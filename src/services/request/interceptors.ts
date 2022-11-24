@@ -35,7 +35,8 @@ const customInterceptor = chain => {
                 await http.post(url.substring(baseURL.length), data)
             )
         }
-        return Promise.resolve(result)
+        
+        return Promise.resolve(res.data)
     }).catch(err => {
         const error = new Error(err.errMsg)
         Promise.reject(error)
