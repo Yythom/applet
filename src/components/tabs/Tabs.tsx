@@ -2,10 +2,11 @@ import { View } from "@tarojs/components"
 import React, { useCallback, useState } from "react"
 import { TabsProvider, TabsContext } from "./context"
 
-const useTab = (defaultIndex) => {
+const useTab = (defaultIndex?: number, onChange?: any) => {
     const [currentIndex, setIndex] = useState(defaultIndex || 0)
     const move = useCallback((idx: number) => {
         setIndex(idx)
+        onChange?.(idx)
     }, [])
     return { move, currentIndex }
 }
@@ -34,13 +35,14 @@ const useTab = (defaultIndex) => {
    </View>
  * ```
  */
-export const Tabs = ({ children, direction = 'horizontal', activeStyle, defaultIndex }: {
+export const Tabs = ({ children, direction = 'horizontal', activeStyle, defaultIndex, onChange }: {
     children: React.ReactNode
     direction?: TabsContext['direction']
     activeStyle?: TabsContext['activeStyle']
     defaultIndex?: number
+    onChange?: (index: number) => void
 }) => {
-    const { move, currentIndex } = useTab(defaultIndex)
+    const { move, currentIndex } = useTab(defaultIndex, onChange)
 
     return (
         <View style={{ display: direction === 'vertical' ? 'flex' : 'block', width: '100%', height: '100%' }}>
