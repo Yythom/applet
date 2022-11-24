@@ -14,6 +14,6 @@ const useBaseStore = create(
         set => createStore(set)
     )
 )
-const useStore = <T extends keyof ReturnType<typeof createStore>>(selector: (s: ReturnType<typeof createStore>) => ReturnType<typeof createStore>[T]) => useBaseStore(selector, shallow)
+const useStore = <T extends keyof ReturnType<typeof createStore>>(selector?: (s: ReturnType<typeof createStore>) => ReturnType<typeof createStore>[T]) => useBaseStore(selector!, shallow)
 export default useStore
 

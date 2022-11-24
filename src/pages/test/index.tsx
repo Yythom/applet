@@ -2,7 +2,7 @@
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { useState } from 'react'
 import { Picker, Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components'
-import { Center, H1, HStack, VStack } from 'src/layout'
+import { Center, H1, HStack, UserName, VStack, WxUserInfo } from 'src/features'
 import './index.less'
 
 const Index = () => {
@@ -10,12 +10,10 @@ const Index = () => {
 
     return (
         <View className='index'>
-            {/* <Text>Hello world!</Text>
-            <UserName />
             <WxUserInfo>
                 <Button>获取用户信息</Button>
 
-            </WxUserInfo> */}
+            </WxUserInfo>
 
             <VStack spacing='30px'>
                 <Upload>

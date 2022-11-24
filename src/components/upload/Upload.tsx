@@ -1,6 +1,6 @@
 import { Image, Progress, View } from "@tarojs/components"
 import { CSSProperties, ReactNode } from "react"
-import { Center, VStack } from "src/layout"
+import { Center, VStack } from "src/features"
 import { UploadProvider, useUploadContext } from "./context"
 import { useUpload } from "./hooks/use-upload"
 

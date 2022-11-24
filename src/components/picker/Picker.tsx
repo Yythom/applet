@@ -1,6 +1,6 @@
 import { PickerView, PickerViewColumn } from "@tarojs/components"
 import React, { CSSProperties, ReactNode, useEffect } from "react"
-import { Center } from "src/layout"
+import { Center } from "src/features"
 import { PickerProvider } from "./context"
 import { usePicker } from "./hooks/use-picker"
 

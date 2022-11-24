@@ -1,7 +1,7 @@
 import { ScrollView, View } from "@tarojs/components"
 import { NodesRef } from "@tarojs/taro"
 import React, { CSSProperties, FC, useState } from "react"
-import { Center, HStack, VStack } from "src/layout"
+import { Center, HStack, VStack } from "src/features"
 import { TabsContext, useTabsContext } from "./context"
 import { Hstyle, Vstyle } from "./default-style"
 import { useTabLine, useTabListRect } from "./hooks"

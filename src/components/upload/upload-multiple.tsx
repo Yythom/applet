@@ -1,6 +1,6 @@
 import { Image, Progress, View } from "@tarojs/components"
 import { CSSProperties, ReactNode } from "react"
-import {   VStack } from "src/layout"
+import {   VStack } from "src/features"
 import { UploadMultipleProvider, useUploadMultipleContext, } from "./context"
 import { FileItem, useUploadMultiple } from "./hooks/use-upload-multiple"
 

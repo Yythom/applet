@@ -1,6 +1,6 @@
 import { Iconfont } from "src/components"
 import { useJump } from "src/hooks"
-import { Box, Flex, Text, VStack } from "src/layout"
+import { Box, Flex, Text, VStack } from "src/features"
 import useStore from "src/store"
 import { tabBarList } from "./list"
 import '../iconfont.css'
