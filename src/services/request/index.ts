@@ -19,17 +19,22 @@ class HttpRequest {
         const task = Taro.request(option)
         return task
     }
-    async get<T>(url, data = '') {
-        const ret: Taro.request.SuccessCallbackResult<T> = await this.baseOptions({ url, data }, 'GET')
+    async get<T>(url, option: any) {
+        const ret: Taro.request.SuccessCallbackResult<T> = await this.baseOptions({ url, data: option.body }, 'GET')
         return ret
     }
 
-    async post<T>(url, data = {}, contentType?) {
-        const ret: Taro.request.SuccessCallbackResult<T> = await this.baseOptions({ url, data, contentType })
+    async post<T>(url, option: any) {
+        const ret: Taro.request.SuccessCallbackResult<T> = await this.baseOptions({ url, data: option.body })
         return ret
     }
 }
 
 const http = new HttpRequest()
+const request = (url, option: any) => {
+    return http.post(url, option)
+}
+request.post = http.post
+request.get = http.get
 
-export default http
+export default request
