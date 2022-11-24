@@ -21,7 +21,7 @@ export const TabPanels = ({ height = '', children }) => {
         >
             {React.Children.toArray(children).map((Element: any, i) => (
                 <SwiperItem key={i} style={{ width: '100%', height: '100%' }}>
-                    {React.cloneElement(Element, { index: i })}
+                    {currentIndex === i && React.cloneElement(Element, {})}
                 </SwiperItem>
             ))}
         </Swiper>
@@ -29,7 +29,6 @@ export const TabPanels = ({ height = '', children }) => {
 }
 
 export const TabPanel = ({ children }) => {
-
     return (
         <View>
             {children}
