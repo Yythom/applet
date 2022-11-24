@@ -1,13 +1,13 @@
 import { View } from "@tarojs/components"
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import { TabsProvider, TabsContext } from "./context"
 
 const useTab = (defaultIndex?: number, onChange?: any) => {
     const [currentIndex, setIndex] = useState(defaultIndex || 0)
-    const move = useCallback((idx: number) => {
+    const move = (idx: number) => {
         setIndex(idx)
         onChange?.(idx)
-    }, [])
+    }
     return { move, currentIndex }
 }
 
