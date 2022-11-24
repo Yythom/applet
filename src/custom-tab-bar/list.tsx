@@ -9,7 +9,7 @@ export const tabBarList = [
     {
         pagePath: '/pages/test/index',
         text: '测试',
-        icon: '',
-        activeIcon: ""
+        icon: 'iconwode-weixuan',
+        activeIcon: 'iconwode-yixuan'
     }
 ]

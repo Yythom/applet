@@ -9,7 +9,7 @@ const CustomTabBar = () => {
     const { switchTab } = useJump()
     const { setCurrentIndex, currentIndex } = useStore<"tabbar">(store => store.tabbar)
 
-    const activeTab = (url: string, index) => {
+    const activeTab = (url: string, index: number) => {
         setCurrentIndex(index)
         switchTab(url)
     }
@@ -43,5 +43,6 @@ const CustomTabBar = () => {
     )
 }
 export default CustomTabBar
+
 
 

@@ -10,13 +10,9 @@ const createStore = set => ({
 })
 
 const useBaseStore = create(
-    set => createStore(set)
-    // immer(
-    //     (set) => ({
-    //         tabbar: createTabbarSlice(set),
-    //         user: createUserSlice(set),
-    //     })
-    // )
+    immer(
+        set => createStore(set)
+    )
 )
 const useStore = <T extends keyof ReturnType<typeof createStore>>(selector: (s: ReturnType<typeof createStore>) => ReturnType<typeof createStore>[T]) => useBaseStore(selector, shallow)
 export default useStore
