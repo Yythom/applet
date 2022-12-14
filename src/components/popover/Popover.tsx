@@ -39,7 +39,6 @@ export const PopoverTrigger = (props: React.PropsWithChildren<{}>) => {
 export const PopoverContent = (props: React.PropsWithChildren<{}>) => {
     const { isOpen, direction, gutter } = usePopoverContext()
 
-
     return (
         <View
             style={{
