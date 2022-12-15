@@ -1,5 +1,5 @@
 export const Hstyle = {
-    height: '40px',
+    height: '45px',
     width: '100%',
 }
 

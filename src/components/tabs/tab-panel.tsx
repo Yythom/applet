@@ -1,15 +1,16 @@
 import { Swiper, SwiperItem, View } from "@tarojs/components"
-import React from "react"
+import React, { CSSProperties, FC, PropsWithChildren } from "react"
 import { useTabsContext } from "./context"
 
-export const TabPanels = ({ height = '', children }) => {
+export const TabPanels: FC<CSSProperties & PropsWithChildren> = ({ height = '', children, ...rest }) => {
     const { currentIndex, move, direction } = useTabsContext()
 
     return (
         <Swiper
             style={{
                 width: "100%",
-                height: height || (direction === 'vertical' ? '100%' : "")
+                height: height || (direction === 'vertical' ? '100%' : ""),
+                ...rest
             }}
             duration={300}
             easingFunction='linear'

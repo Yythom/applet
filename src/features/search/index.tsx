@@ -1,16 +1,21 @@
 import { Button } from "@tarojs/components"
 import { FC } from "react"
-import { Input, InputGroup, InputGroupProps, InputRight, useInputContext } from "src/components"
+import { Iconfont, Input, InputGroup, InputGroupProps, InputLeft, InputRight, useInputContext } from "src/components"
 import { Center } from "../layout"
 
 export const SearchInput: FC<InputGroupProps & { onSearch: InputGroupProps['onChange'] }> = ({
-    onSearch
+    onSearch,
+    ...rest
 }) => {
 
     return (
         <InputGroup
             alignItems='center'
+            {...rest}
         >
+            <InputLeft>
+                <Iconfont iconName='iconsousuo1' paddingLeft='12px' />
+            </InputLeft>
             <Input padding='0 12px' />
             <InputRight>
                 <SearchButton onSearch={onSearch} />
@@ -30,7 +35,7 @@ const SearchButton: FC<{ onSearch: InputGroupProps['onChange'] }> = ({ onSearch 
                 background: '#C08C4B',
                 marginRight: '4px',
                 borderRadius: '100px',
-                color: '#fff'
+                color: '#fff',
             }}
             onClick={ev => onSearch?.(value!)}
         >

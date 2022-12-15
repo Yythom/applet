@@ -15,10 +15,18 @@ export const InputGroup: FC<InputGroupProps> = ({ children, onChange, defaultVal
 
     return (
         <InputProvider value={{ onChange: change, value }}>
-            <Flex border='2px solid #C08C4B' borderRadius='100px' height='68rpx' {...rest}>
+            <Flex border='2rpx solid #C08C4B' borderRadius='100px' height='68rpx' {...rest}>
                 {children}
             </Flex>
         </InputProvider>
+    )
+}
+
+export const InputLeft: FC<BoxProps> = ({ children, ...rest }) => {
+    return (
+        <Box width='max-content' {...rest}>
+            {children}
+        </Box>
     )
 }
 

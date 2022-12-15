@@ -7,7 +7,7 @@ import { Hstyle, Vstyle } from "./default-style"
 import { useTabLine, useTabListRect } from "./hooks"
 import { TabLine } from "./tab-line"
 
-export const TabList = ({ children, spacing = '30px' }: { children: React.ReactNode, spacing?: string }) => {
+export const TabList = ({ children, spacing = '30px', ...rest }: { children: React.ReactNode, spacing?: string } & CSSProperties) => {
     const { direction } = useTabsContext()
     const {
         ListClass,
@@ -35,23 +35,25 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
             scrollAnchoring
             // scrollWithAnimation //   // 这里有个问题 还在滚动中的时候获取的位置有问题
             {...openScroll}
-            style={{ ...(direction === 'horizontal' ? Hstyle : Vstyle) }}
+            style={{ ...(direction === 'horizontal' ? Hstyle : Vstyle), ...rest }}
         >
-            <View className={ListClass} style={{ width: 'max-content', height: 'max-content', position: 'relative', }}>
+            <View className={ListClass} style={{ width: 'max-content', height: 'max-content', position: 'relative' }}>
                 <Wrap spacing={spacing}>
                     {
-                        React.Children.toArray(children).map((Element: any, i) =>
-                            Element.type === TabLine ? React.cloneElement(Element, { lineProps }) : React.cloneElement(Element, {
-                                _INJECT: {
-                                    index: i,
-                                    scrollDistance: scrollDistance.current,
-                                    setScrollLeft,
-                                    setScrollTop,
-                                    getScrollViewRect,
-                                    setLineProps,
-                                }
-                            })
-                        )
+                        React.Children.toArray(children).filter((e: any) => e.type === TabItem || e.type === TabLine).map((Element: any, i) => {
+                            if (Element.type === TabItem) {
+                                return React.cloneElement(Element, {
+                                    _INJECT: {
+                                        index: i,
+                                        scrollDistance: scrollDistance.current,
+                                        setScrollLeft,
+                                        setScrollTop,
+                                        getScrollViewRect,
+                                        setLineProps,
+                                    }
+                                })
+                            } else if (Element.type === TabLine) return React.cloneElement(Element, { lineProps })
+                        })
                     }
                 </Wrap>
             </View>
@@ -62,9 +64,8 @@ export const TabList = ({ children, spacing = '30px' }: { children: React.ReactN
 
 // 没有使用 context 已经最小粒度渲染了 没必要 内部log可以看到
 // Inject 注入的 不用外面传入 后续会改成 _INJECT:{ XX:()=>{} }
-export interface TabItemProps {
+export interface TabItemProps extends CSSProperties {
     children?: React.ReactNode
-    style?: CSSProperties
     _INJECT?: {
         index?: number   // Inject
         scrollDistance?: number // Inject
@@ -74,7 +75,8 @@ export interface TabItemProps {
         setLineProps?: (d: TabsContext['lineProps']) => void
     }
 }
-export const TabItem: FC<TabItemProps> = ({ children, style, _INJECT = {} }) => {
+
+export const TabItem: FC<TabItemProps> = ({ children, _INJECT = {}, ...style }) => {
     const { index = 0 } = _INJECT
     const { move, currentIndex, activeStyle } = useTabsContext()
 
@@ -87,7 +89,6 @@ export const TabItem: FC<TabItemProps> = ({ children, style, _INJECT = {} }) => 
             onClick={() => move(index)}
             style={{
                 height: '30px',
-                background: '#eee',
                 borderRadius: '999px',
                 padding: '0 12px',
                 transition: '300ms',

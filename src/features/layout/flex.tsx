@@ -1,29 +1,27 @@
-import { View, ViewProps } from "@tarojs/components"
 import { CSSProperties, FC } from "react"
+import { Box, BoxProps } from "./box"
+import { getNoOfLines } from "./text"
 
-export type FlexProps = ViewProps & CSSProperties
-export const Flex: FC<FlexProps> = ({ children, onClick, ...rest }) => {
+export type FlexProps = BoxProps & CSSProperties
+export const Flex: FC<FlexProps> = ({ children, onClick, noOfLines, ...rest }) => {
     return (
-        <View style={{ display: "flex", ...rest }} onClick={onClick}  >
+        <Box display='flex' {...getNoOfLines(noOfLines) as any} {...rest} onClick={onClick}  >
             {children}
-        </View>
+        </Box>
     )
 }
-export type CenterProps = ViewProps & CSSProperties
-export const Center: FC<CenterProps> = ({ children, onClick, ...rest }) => {
+export type CenterProps = BoxProps & CSSProperties
+export const Center: FC<CenterProps> = ({ children, onClick, noOfLines, ...rest }) => {
     return (
-        <View
-            style={{
-                display: "flex",
-                width: '100%',
-                height: '100%',
-                alignItems: 'center',
-                justifyContent: 'center',
-                ...rest
-            }}
+        <Flex
+            width='100%'
+            height='100%'
+            alignItems='center'
+            justifyContent='center'
+            {...rest}
             onClick={onClick}
         >
             {children}
-        </View>
+        </Flex>
     )
 }
