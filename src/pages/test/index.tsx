@@ -2,7 +2,7 @@
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { useState } from 'react'
 import { Picker, Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components'
-import { Center, H1, HStack, UserName, VStack, WxUserInfo } from 'src/features'
+import { Center, H1, HStack, VStack, AuthWxUserInfo } from 'src/features'
 import './index.less'
 
 const Index = () => {
@@ -10,10 +10,10 @@ const Index = () => {
 
     return (
         <View className='index'>
-            <WxUserInfo>
+            <AuthWxUserInfo>
                 <Button>获取用户信息</Button>
 
-            </WxUserInfo>
+            </AuthWxUserInfo>
 
             <VStack spacing='30px'>
                 <Upload>
@@ -112,7 +112,7 @@ const Index = () => {
                         defaultIndex={4}
                     >
                         <TabList>
-                            <TabItem style={{ fontSize: '18px' }}>
+                            <TabItem>
                                 测试 1
                             </TabItem>
                             <TabItem>

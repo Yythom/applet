@@ -11,7 +11,7 @@ function bindphone(iv, encryptedData) {
 }
 
 
-export const WxUserInfo = ({ children }) => {
+export const AuthWxUserInfo = ({ children }) => {
     const [userInfo, { getUserInfo, getUserProfile }] = useUserInfo()
     const user = useStore<'user'>(s => s.user)
     const { loading, run } = useRequest(bindphone, { manual: true, })

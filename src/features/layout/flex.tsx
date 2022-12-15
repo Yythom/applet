@@ -18,6 +18,7 @@ export const Center: FC<CenterProps> = ({ children, onClick, noOfLines, ...rest 
             height='100%'
             alignItems='center'
             justifyContent='center'
+            flexShrink='0'
             {...rest}
             onClick={onClick}
         >

@@ -5,7 +5,7 @@ export const Iconfont: FC<{ iconName?: string } & CSSProperties> = ({ iconName =
     return (
         <Text
             className={`iconfont ${iconName}`}
-            style={{ fontSize: '16px', ...rest }}
+            style={{ fontSize: '16px', width: 'max-content',height: 'max-content',  ...rest }}
         />
     )
 }

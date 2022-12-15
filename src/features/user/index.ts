@@ -1,3 +1,3 @@
-export * from './components/UserName'
+export * from './components/UserInfo'
 export * from './components/WxUserInfo'
 
