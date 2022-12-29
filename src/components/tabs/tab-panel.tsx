@@ -20,11 +20,15 @@ export const TabPanels: FC<CSSProperties & PropsWithChildren> = ({ height = '', 
             // h5 不能为false
             vertical={direction === 'vertical' ? true : undefined}
         >
-            {React.Children.toArray(children).map((Element: any, i) => (
-                <SwiperItem key={i} style={{ width: '100%', height: '100%' }}>
-                    {currentIndex === i && React.cloneElement(Element, {})}
-                </SwiperItem>
-            ))}
+            {
+                React.Children.toArray(children).map((Element: any, i) => {
+                    return (
+                        <SwiperItem key={i} style={{ width: '100%', height: '100%' }}>
+                            {currentIndex === i ? Element : null}
+                        </SwiperItem>
+                    )
+                })
+            }
         </Swiper>
     )
 }
