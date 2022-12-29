@@ -1,4 +1,5 @@
 import { Swiper, SwiperItem, View } from "@tarojs/components"
+import { getEnv } from "@tarojs/taro"
 import React, { CSSProperties, FC, PropsWithChildren } from "react"
 import { useTabsContext } from "./context"
 
@@ -16,14 +17,15 @@ export const TabPanels: FC<CSSProperties & PropsWithChildren> = ({ height = '', 
             easingFunction='linear'
             current={currentIndex}
             onChange={e => move(e.detail.current)}
-            circular
+            // h5 不能为false
+            circular={getEnv() === 'WEB' ? undefined : true}
             // h5 不能为false
             vertical={direction === 'vertical' ? true : undefined}
         >
             {
                 React.Children.toArray(children).map((Element: any, i) => {
                     return (
-                        <SwiperItem key={i} style={{ width: '100%', height: '100%' }}>
+                        <SwiperItem key={Element?.key || i} style={{ width: '100%', height: '100%' }}>
                             {currentIndex === i ? Element : null}
                         </SwiperItem>
                     )
