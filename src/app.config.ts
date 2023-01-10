@@ -2,6 +2,7 @@
 export default defineAppConfig({
     pages: [
         'pages/index/index',
+        'pages/user/index',
         'pages/test/index'
     ],
     subpackages: [{
@@ -21,6 +22,10 @@ export default defineAppConfig({
             {
                 pagePath: 'pages/test/index',
                 text: '测试'
+            },
+            {
+                pagePath: 'pages/user/index',
+                text: '我的'
             }
         ]
     },

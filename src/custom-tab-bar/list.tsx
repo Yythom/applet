@@ -11,5 +11,11 @@ export const tabBarList = [
         text: '测试',
         icon: 'iconwode-weixuan',
         activeIcon: 'iconwode-yixuan'
+    },
+    {
+        pagePath: '/pages/user/index',
+        text: '我的',
+        icon: 'iconwode-weixuan',
+        activeIcon: 'iconwode-yixuan'
     }
 ]
