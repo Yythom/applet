@@ -2,7 +2,7 @@
 import { View, Text, Button, ScrollView } from '@tarojs/components'
 import { useState } from 'react'
 import { Picker, Popover, PopoverContent, PopoverTrigger, Popup, PopupClose, PopupContent, PopupTigger, TabItem, TabLine, TabList, TabPanel, TabPanels, Tabs, Upload, UploadMultiple } from 'src/components'
-import { Center, H1, HStack, VStack, AuthWxUserInfo } from 'src/features'
+import { Center, H1, HStack, VStack, AuthWxUserInfo, Box } from 'src/features'
 import './index.less'
 
 const Index = () => {
@@ -100,6 +100,17 @@ const Index = () => {
                                     </Picker.Item>
                                 </Picker.Column>
                             </Picker>
+                        </PopupContent>
+                    </Popup>
+
+                    <Popup direction='center'>
+                        <PopupTigger>
+                            <View>中间</View>
+                        </PopupTigger>
+                        <PopupContent>
+                            <Box width='100px' height='100px'>
+                                21312
+                            </Box>
                         </PopupContent>
                     </Popup>
                 </View>

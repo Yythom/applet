@@ -1,7 +1,8 @@
-import { RootPortal, View } from "@tarojs/components"
+import { View } from "@tarojs/components"
 import React, { CSSProperties, useState } from "react"
 import { createContext } from "src/utils"
 import { Portal } from ".."
+import { styles } from "./styles"
 import { PopupType } from "./type"
 
 const [PopupProvider, useContext] = createContext<{ setOpen: (d: boolean) => void, isOpen: boolean, direction: PopupType['direction'], close: () => Promise<void> }>({ name: 'PopupContext' })
@@ -104,62 +105,4 @@ const PopupMask = props => (
     </Portal>
 )
 
-const styles = {
-    bottom: {
-        open: {
-            transform: 'translateY(0)',
-            bottom: '0',
-        },
-        close: {
-            transform: 'translateY(100%)',
-            bottom: '0',
-        },
-        common: {
-            width: '100vw',
-            height: 'max-height',
-        }
-    },
-    left: {
-        open: {
-            transform: 'translateX(0)',
-            left: '0',
-        },
-        close: {
-            transform: 'translateX(-100%)',
-            left: '0',
-        },
-        common: {
-            width: 'max-content',
-            height: '100vh'
-        }
-    },
-    right: {
-        open: {
-            transform: 'translateX(0)',
-            right: '0',
-        },
-        close: {
-            transform: 'translateX(100%)',
-            right: '0',
-        },
-        common: {
-            width: 'max-content',
-            height: '100vh'
-        }
-    },
-    top: {
-        open: {
-            transform: 'translateY(0)',
-            top: '0',
-        },
-        close: {
-            transform: 'translateY(-100%)',
-            top: '0',
-        },
-        common: {
-            width: '100vw',
-            height: 'max-height',
-        }
-    }
-}
 

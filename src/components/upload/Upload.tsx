@@ -23,13 +23,19 @@ Upload.PreviewImage = ({ style }: { style?: CSSProperties, }) => {
             {
                 (progress === 100) ?
                     <>
-                        {url.download && <Upload.RemoveFileIcon style={{ position: 'absolute', right: '-4px', top: '-4px' }} />}
+                        {
+                            url.download && (
+                                <Upload.RemoveFileIcon
+                                    style={{ position: 'absolute', right: '-4px', top: '-4px' }}
+                                />
+                            )
+                        }
                         <Image
                             onClick={() => preview(url.download)}
                             src={url.download || ''}
                             style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                         />
-                    </>                    :
+                    </> :
                     <VStack spacing='4px'>
                         <View>{progress}</View>
                         <Progress
@@ -53,7 +59,15 @@ Upload.FileTrigger = ({ children }) => {
 }
 
 Upload.RemoveFileIcon = ({ children, style }: { children?: ReactNode, style: CSSProperties }) => {
+    const { reset } = useUploadContext()
     return (
-        <View style={{ fontSize: '24px', fontWeight: '600', ...style, zIndex: 1 }}>{children || 'X'}</View>
+        <View
+            style={{ fontSize: '24px', fontWeight: '600', ...style, zIndex: 1 }}
+            onClick={() => {
+                reset()
+            }}
+        >
+            {children || 'X'}
+        </View>
     )
 }

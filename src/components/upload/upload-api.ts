@@ -1,6 +1,15 @@
 import Taro from "@tarojs/taro"
 
-export const uploadApi = async (filePath: string, name = '', formData = {}, onProgress = (progress: number) => { }) => {
+export type UploadResult = {
+    download: string
+    preview: string
+}
+export const uploadApi = async (
+    filePath: string,
+    name = '',
+    formData = {},
+    onProgress = (_progress: number) => { }
+) => {
     return new Promise(resolve => {
         const task = Taro.uploadFile({
             name: name,
@@ -8,10 +17,11 @@ export const uploadApi = async (filePath: string, name = '', formData = {}, onPr
             filePath,
             formData,
             success(ret) {
-                resolve((JSON.parse(ret.data) as any).data)
+                const data = JSON.parse(ret.data).data as UploadResult
+                resolve(data)
             },
         })
-     
+
         task.progress(res => {
             onProgress?.(res.progress)
         })

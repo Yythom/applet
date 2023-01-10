@@ -1,9 +1,18 @@
-import Taro from "@tarojs/taro";
-import { useState } from "react";
-import { useImage } from "taro-hooks";
-import { uploadApi } from "../upload-api";
+import Taro from "@tarojs/taro"
+import { useState } from "react"
+import { useImage } from "taro-hooks"
+import { uploadApi, UploadResult } from "../upload-api"
 
-export type FileItem = Record<string, { url: { download?: string, preview?: string }, progress: number, name: string }>
+export type FileItem = Record<
+    string, // 文件名
+    {
+        url: {
+            download?: string
+            preview?: string
+        },
+        progress: number
+        name: string
+    }>
 
 /**
  * @param isCompress  是否开启压缩 
@@ -19,9 +28,9 @@ export const useUploadMultiple = ({ count, isCompress }: { isCompress?: boolean,
     const selectFile = async () => {
         const file = await choose()
         const newFils = { ...files }
-        file.tempFiles.forEach((element) => {
+        file.tempFiles.forEach((element: File) => {
             onUpload(element, {}, newFils)
-        });
+        })
     }
 
     const onUpload = async (
@@ -38,10 +47,17 @@ export const useUploadMultiple = ({ count, isCompress }: { isCompress?: boolean,
         }
 
         const item = newFils[name]
-        const _data: any = await uploadApi(isCompress ? (await compress(path)).tempFilePath : path, name, formData, (prog: number) => {
-            item.progress = prog
-            prog !== 100 && setFiles({ ...newFils })
-        })
+        const _data = await uploadApi(
+            isCompress ? // 开启压缩
+                (await compress(path)).tempFilePath : path,
+            name,
+            formData,
+            (prog: number) => {
+                item.progress = prog
+                prog !== 100 && setFiles({ ...newFils })
+            }
+        ) as UploadResult | undefined
+
         item.url = {
             download: _data?.download, // 只需要改这里
             preview: _data?.preview
@@ -49,7 +65,7 @@ export const useUploadMultiple = ({ count, isCompress }: { isCompress?: boolean,
         setFiles({ ...newFils })
     }
 
-    const removeFile = (key) => {
+    const removeFile = (key: string) => {
         const newFils = { ...files }
         delete newFils[key]
         setFiles(newFils)
@@ -61,6 +77,6 @@ export const useUploadMultiple = ({ count, isCompress }: { isCompress?: boolean,
         onUpload,
         removeFile,
         files,
-        preview: (src) => preview({ urls: Object.values(files).map(e => e.url.download), current: src })
+        preview: src => preview({ urls: Object.values(files).map(e => e.url.download), current: src })
     }
 }

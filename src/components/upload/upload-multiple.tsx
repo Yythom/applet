@@ -1,6 +1,6 @@
 import { Image, Progress, View } from "@tarojs/components"
 import { CSSProperties, ReactNode } from "react"
-import {   VStack } from "src/features"
+import { VStack } from "src/features"
 import { UploadMultipleProvider, useUploadMultipleContext, } from "./context"
 import { FileItem, useUploadMultiple } from "./hooks/use-upload-multiple"
 
@@ -42,7 +42,7 @@ UploadMultiple.ImageItem = ({ fileItem, style }: { fileItem: FileItem[''], style
                         onClick={() => preview(fileItem?.url.download)}
                         src={fileItem?.url.download || ''}
                         style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                    />                    :
+                    /> :
                     <VStack spacing='4px'>
                         <View>{fileItem?.progress}</View>
                         <Progress
@@ -68,6 +68,11 @@ UploadMultiple.RemoveFileIcon = ({ children, style, fileName }: { children?: Rea
     const { removeFile } = useUploadMultipleContext()
 
     return (
-        <View onClick={() => removeFile(fileName)} style={{ fontSize: '24px', fontWeight: '600', ...style, zIndex: 1 }}>{children || 'X'}</View>
+        <View
+            onClick={() => removeFile(fileName)}
+            style={{ fontSize: '24px', fontWeight: '600', ...style, zIndex: 1 }}
+        >
+            {children || 'X'}
+        </View>
     )
 }
